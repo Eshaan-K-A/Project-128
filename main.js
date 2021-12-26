@@ -4,6 +4,8 @@ var rightX = 0;
 var rightY = 0;
 var leftX = 0;
 var leftY = 0;
+var leftScore = 0;
+var status = "";
 
 function preload(){
     song1 = loadSound("music.mp3");
@@ -21,6 +23,7 @@ function setup(){
 }
 function draw(){
     image(video, 0, 0, 650, 470);
+    
 }
 function gotPoses(results){
     if(results.length > 0){
@@ -31,5 +34,6 @@ function gotPoses(results){
         leftX = results[0].pose.leftWrist.x;
         leftY = results[0].pose.leftWrist.y;
         console.log("Left wrist x = " + leftX + " Left wrist y = " + leftY);
+        leftScore = results[0].pose.keypoints[9].score;
     };
 }
